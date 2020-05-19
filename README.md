@@ -22,5 +22,5 @@ base url : restExamples/api
 
 ---
 ## Example results
-### getCustomers
+#### getCustomers
 [![get-Customers-results.png](https://i.postimg.cc/nr98V6dP/get-Customers-results.png)](https://postimg.cc/0KvXcH1Y)
