@@ -20,6 +20,5 @@ base url : restExamples/api
 
 @DELETE /removeCustomer/{id}  --> removes a customer from database.
 
-# results
 
-![Alt text](https://imgur.com/a/sheVRZp "getCustomers")
+![results image](https://imgur.com/a/sheVRZp)
