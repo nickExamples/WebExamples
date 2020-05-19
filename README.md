@@ -1,4 +1,4 @@
-# Rest api example
+# REST api example
 ---
 This is a rest api example exposing database operations in JSON, using java jee.
 
