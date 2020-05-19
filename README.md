@@ -16,7 +16,7 @@ base url : restExamples/api
 
 @GET /getCustomers/AllCustomerPurchaces --> returns all the purchases of customers.
 
-@POST /addCustomer/{id}/{name}/{zipCode}/{discountCode}
+@POST /addCustomer/{id}/{name}/{zipCode}/{discountCode} --> adds a customer to the database with minimal required information.
 
-@DELETE /removeCustomer/{id}
+@DELETE /removeCustomer/{id}  --> removes a customer from database.
 
