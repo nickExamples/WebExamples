@@ -45,15 +45,13 @@ import repositorys.CustomerEJB;
 //@RequestScoped
 @Stateless
 public class GenericResource {
-
-       
+           
     @Context
     private UriInfo context;
 
     @Context
     private UriInfo uriInfo;
-       
-     
+        
     @EJB
     CustomerEJB cejb;
     
@@ -70,7 +68,6 @@ public class GenericResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Collection<Customer> getCustomers(){
         
-        
         return cejb.findAll_customer();
     }
     
@@ -81,28 +78,28 @@ public class GenericResource {
                                 @PathParam("name") String name,
                                 @PathParam("zipCode") String zipCode,
                                 @PathParam("disCode") String disCode){
-    
-    Customer cs = new Customer();
-    Customer cs1;
-    cs.setCustomerId(id);
-    cs.setName(name);
-    DiscountCode ds = new DiscountCode();
-    MicroMarket mk = new MicroMarket();
-    mk.setZipCode(zipCode);
-    ds.setDiscountCode(disCode);
-            
-    cs.setDiscountCode(ds);
-    cs.setZip(mk);
-    
-    cs1 = cejb.addCustomer(cs);
-    URI customeruri = uriInfo.getBaseUriBuilder().path("customer/getCustomers/").path(cs1.getCustomerId().toString()).build();
-    return Response.created(customeruri).build();
+        Customer cs = new Customer();
+        Customer cs1;
+        cs.setCustomerId(id);
+        cs.setName(name);
+        DiscountCode ds = new DiscountCode();
+        MicroMarket mk = new MicroMarket();
+        mk.setZipCode(zipCode);
+        ds.setDiscountCode(disCode);
+
+        cs.setDiscountCode(ds);
+        cs.setZip(mk);
+
+        cs1 = cejb.addCustomer(cs);
+        URI customeruri = uriInfo.getBaseUriBuilder().path("customer/getCustomers/").path(cs1.getCustomerId().toString()).build();
+        return Response.created(customeruri).build();
     }
     
     @DELETE
     @Path("removeCustomer/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response removeCustomer(@PathParam("id") int id){
+        
         Customer cus;
         cus = cejb.removeCustomer(id);
     
@@ -114,8 +111,7 @@ public class GenericResource {
     @Path("getCustomers/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCustomersId(@PathParam("id") int id){
-        
-        
+                
         Customer cs = cejb.findCustomerId(id);
                 
         if(cs == null){
@@ -123,7 +119,7 @@ public class GenericResource {
         }
                
         return Response.ok(cs).build();
-        //return test;
+        
     }
     
     @GET
@@ -146,16 +142,16 @@ public class GenericResource {
     
 
     /**
-     * Retrieves representation of an instance of com.wb.restexamples.GenericResource
+     * Retrieves representation of an instance of rest.resources.GenericResource
      * @return an instance of java.lang.String
      */
     @GET
-    @Path("sayHello")
+    @Path("todo")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sayhello() {
+    public String doSomething() {
        
         return "test";
-        //throw new UnsupportedOperationException();
+        
     }
 
     /**
