@@ -29,99 +29,67 @@ import org.hibernate.Session;
 @EJB(beanInterface = CustomerEJB.class, name = "CustomerEJB")
 public class CustomerEJB {
     
+    
     @PersistenceContext(unitName = "com.wb_restExamples_war_1.0-SNAPSHOTPU")
     private EntityManager em;
     
   
         
-       public List<Customer> findAll_customer() {
-           
-                      
-           TypedQuery<Customer> query = em.createNamedQuery("Customer.findAll", Customer.class);
-           return query.getResultList();
+    public List<Customer> findAll_customer() {
+        
+        TypedQuery<Customer> query = em.createNamedQuery("Customer.findAll", Customer.class);
+        return query.getResultList();
        
+        }
+       
+    public Customer findCustomerId(int id){
+        
+        Customer cs = em.find(Customer.class, id);
+        if(cs == null){
+            throw new NotFoundException();
+                }
+                return cs;
            }
        
-       public Customer findCustomerId(int id){
-           
-           
-           Customer cs = em.find(Customer.class, id);
-           if(cs == null){
-               
-                         
-                throw new NotFoundException();
-               }
-           return cs;
+    public Collection<PurchaseOrder> getCustomerIdPO(int id){
+        
+        
+        Customer cs = em.find(Customer.class, id);
+        if(cs == null){
+            throw new NotFoundException();
            }
-       
-       public Collection<PurchaseOrder> getCustomerIdPO(int id){
-           
-           Customer cs = em.find(Customer.class, id);
-           if(cs == null){
-               throw new NotFoundException();
-           }
-           return cs.getPurchaseOrderCollection();
+            return cs.getPurchaseOrderCollection();
            
        }
        
-       public Collection<PurchaseOrder> getAllCustomerPurchases(){
-                      
-           TypedQuery<Customer> query = em.createNamedQuery("Customer.findAll", Customer.class);
-           List<Customer> Customerlist = query.getResultList();
+    public Collection<PurchaseOrder> getAllCustomerPurchases(){
+        
+        TypedQuery<Customer> query = em.createNamedQuery("Customer.findAll", Customer.class);
+        List<Customer> Customerlist = query.getResultList();
            
-           List<PurchaseOrder> po = new ArrayList<>();
-           for(Customer cu : Customerlist){
-               
-               if(cu.getPurchaseOrderCollection() != null){
-               
-                   for(PurchaseOrder pu : cu.getPurchaseOrderCollection()){
-                   po.add(pu);
-                                  
-                   }
+        List<PurchaseOrder> po = new ArrayList<>();
+        for(Customer cu : Customerlist){
+                        
+            if(cu.getPurchaseOrderCollection() != null){
+                    for(PurchaseOrder pu : cu.getPurchaseOrderCollection()){
+                        po.add(pu);
+                        }
                 }
             }
         return po;   
        }
        
        public Customer addCustomer(Customer cu){
-           /*
-           List<Customer> cuList = findAll_customer();
-           for(Customer c : cuList){
-               if(cu.getCustomerId().equals(c.getCustomerId()) ){
-                   
-                   throw new NotAllowedException("customer id allready in use...");
-               }
-               
-           }
-          */
-          // try{
-               
-           
-           //em.getTransaction().begin();
            em.persist(cu);
-           //em.getTransaction().commit();
-           //em.close();
            return cu;
-           //}
-           //catch(Exception ex){
-           //    ex.printStackTrace();
-           //}
-           //return null;
+           
        }
        
        public Customer removeCustomer(int id){
-            
+                      
            Customer cus = findCustomerId(id);
-           
-           //try{
-           //    em.getTransaction().begin();
-               em.remove(cus);
-           //    em.getTransaction().commit();
-           //    em.close();
-           //}
-           //catch(Exception ex){
-           //    ex.printStackTrace();
-            return cus;
+           em.remove(cus);
+           return cus;
             }
            
            
