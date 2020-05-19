@@ -19,6 +19,3 @@ base url : restExamples/api
 @POST /addCustomer/{id}/{name}/{zipCode}/{discountCode} --> adds a customer to the database with minimal required information.
 
 @DELETE /removeCustomer/{id}  --> removes a customer from database.
-
-
-![results image](https://imgur.com/a/sheVRZp)
