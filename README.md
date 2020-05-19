@@ -16,3 +16,7 @@ base url : restExamples/api
 
 @GET /getCustomers/AllCustomerPurchaces --> returns all the purchases of customers.
 
+@POST /addCustomer/{id}/{name}/{zipCode}/{discountCode}
+
+@DELETE /removeCustomer/{id}
+
