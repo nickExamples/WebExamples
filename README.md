@@ -1,6 +1,8 @@
 # Rest api example
 
-This is a rest api exposing database operations in JSON.
+This is a rest api example exposing database operations in JSON, using java jee.
+
+Launch browser with : http://localhost:8080/restExamples/api/customer/getCustomers
 
 base url : restExamples/api
 
