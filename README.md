@@ -1,6 +1,7 @@
 # Rest api example
 
 This is a rest api exposing database operations in JSON.
+
 base url : restExamples/api
 
 /customer --> for all customer related information
