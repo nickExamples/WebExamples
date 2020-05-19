@@ -16,6 +16,7 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.NotFoundException;
+import javax.ws.rs.NotAllowedException;
 import org.hibernate.Query;
 
 import org.hibernate.Session;
@@ -81,5 +82,49 @@ public class CustomerEJB {
             }
         return po;   
        }
+       
+       public Customer addCustomer(Customer cu){
+           /*
+           List<Customer> cuList = findAll_customer();
+           for(Customer c : cuList){
+               if(cu.getCustomerId().equals(c.getCustomerId()) ){
+                   
+                   throw new NotAllowedException("customer id allready in use...");
+               }
+               
+           }
+          */
+          // try{
+               
+           
+           //em.getTransaction().begin();
+           em.persist(cu);
+           //em.getTransaction().commit();
+           //em.close();
+           return cu;
+           //}
+           //catch(Exception ex){
+           //    ex.printStackTrace();
+           //}
+           //return null;
+       }
+       
+       public Customer removeCustomer(int id){
+            
+           Customer cus = findCustomerId(id);
+           
+           //try{
+           //    em.getTransaction().begin();
+               em.remove(cus);
+           //    em.getTransaction().commit();
+           //    em.close();
+           //}
+           //catch(Exception ex){
+           //    ex.printStackTrace();
+            return cus;
+            }
+           
+           
+       }
     
-}
+

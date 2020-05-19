@@ -21,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import Entitys.*;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -29,7 +30,9 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.NotFoundException;
+import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
 import repositorys.CustomerEJB;
 
@@ -47,6 +50,8 @@ public class GenericResource {
     @Context
     private UriInfo context;
 
+    @Context
+    private UriInfo uriInfo;
        
      
     @EJB
@@ -68,6 +73,42 @@ public class GenericResource {
         
         return cejb.findAll_customer();
     }
+    
+    @POST
+    @Path("addCustomer/{id}/{name}/{zipCode}/{disCode}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addCustomer(@PathParam("id") int id,
+                                @PathParam("name") String name,
+                                @PathParam("zipCode") String zipCode,
+                                @PathParam("disCode") String disCode){
+    
+    Customer cs = new Customer();
+    Customer cs1;
+    cs.setCustomerId(id);
+    cs.setName(name);
+    DiscountCode ds = new DiscountCode();
+    MicroMarket mk = new MicroMarket();
+    mk.setZipCode(zipCode);
+    ds.setDiscountCode(disCode);
+            
+    cs.setDiscountCode(ds);
+    cs.setZip(mk);
+    
+    cs1 = cejb.addCustomer(cs);
+    URI customeruri = uriInfo.getBaseUriBuilder().path("customer/getCustomers/").path(cs1.getCustomerId().toString()).build();
+    return Response.created(customeruri).build();
+    }
+    
+    @DELETE
+    @Path("removeCustomer/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response removeCustomer(@PathParam("id") int id){
+        Customer cus;
+        cus = cejb.removeCustomer(id);
+    
+        return Response.ok().build();
+    }
+    
     
     @GET
     @Path("getCustomers/{id}")

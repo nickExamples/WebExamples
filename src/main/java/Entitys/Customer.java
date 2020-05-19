@@ -87,7 +87,7 @@ public class Customer implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private DiscountCode discountCode;
     @JoinColumn(name = "ZIP", referencedColumnName = "ZIP_CODE")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private MicroMarket zip;
 
     public Customer() {
