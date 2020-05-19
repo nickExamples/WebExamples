@@ -16,7 +16,7 @@
     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
     <init-param>
       <param-name>com.sun.jersey.config.property.packages</param-name>
-      <param-value>com.wb</param-value>
+      <param-value>rest.resources</param-value>
     </init-param>
     <init-param>
           <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
@@ -26,7 +26,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Jersey REST Service</servlet-name>
-    <url-pattern>/api/*</url-pattern>
+    <url-pattern>/*</url-pattern>
   </servlet-mapping>
   <!-- Jersey Servlet configurations -->
     
