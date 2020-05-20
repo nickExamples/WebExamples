@@ -22,7 +22,18 @@ base url : restExamples/api
 
 @DELETE /removeCustomer/{id}  --> removes a customer from database.
 
+
 ---
 ## Example results
-#### getCustomers
+#### /getCustomers
 [![get-Customers-results.png](https://i.postimg.cc/nr98V6dP/get-Customers-results.png)](https://postimg.cc/0KvXcH1Y)
+
+#### /addCustomer
+[![add-Customer-results.png](https://i.postimg.cc/gjBZDx8n/add-Customer-results.png)](https://postimg.cc/bSkrYN6h)
+
+#### /removeCustomer/{id}
+[![remove-Customer-ID-results.png](https://i.postimg.cc/PrWLJVFC/remove-Customer-ID-results.png)](https://postimg.cc/CzKM6700)
+
+#### /getCustomers/{id}/purchaces
+[![get-Customer-Id-Purchaces.png](https://i.postimg.cc/nrtFtpx0/get-Customer-Id-Purchaces.png)](https://postimg.cc/7Gm83vf2)
+
