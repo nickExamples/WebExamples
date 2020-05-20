@@ -18,6 +18,8 @@ base url : restExamples/api
 
 @POST /addCustomer/{id}/{name}/{zipCode}/{discountCode} --> adds a customer to the database with minimal required information.
 
+@POST /addCustomer  --> adds a customer consuming a json object representing a customer.
+
 @DELETE /removeCustomer/{id}  --> removes a customer from database.
 
 ---
