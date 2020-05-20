@@ -99,11 +99,13 @@ public class GenericResource {
     @Path("addCustomer")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addCustomer1(Customer c){
+    public Response addCustomer(Customer c){
         
         Customer cs1;
         //System.out.println("customer details : "+c.getName()+" "+c.getCustomerId());
         cs1 = cejb.addCustomer(c);
+        if(cs1 == null)
+            return Response.status(Response.Status.CONFLICT).entity(cs1).build();
         return Response.status(201).entity(cs1).build();      
     }
 

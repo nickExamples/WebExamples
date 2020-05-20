@@ -80,8 +80,16 @@ public class CustomerEJB {
        }
        
        public Customer addCustomer(Customer cu){
-           em.persist(cu);
-           return cu;
+           //here we also need to validate customer id not allready in use..
+           Customer cus = findCustomerId(cu.getCustomerId());
+           if(cus != null){
+                              
+               return null;
+           }
+            em.persist(cu);
+            return cu;
+           
+           
            
        }
        
