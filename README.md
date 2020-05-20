@@ -1,5 +1,5 @@
-# Rest api example
-
+# REST api example
+---
 This is a rest api example exposing database operations in JSON, using java jee.
 
 Launch browser with : http://localhost:8080/restExamples/api/customer/getCustomers
@@ -20,3 +20,7 @@ base url : restExamples/api
 
 @DELETE /removeCustomer/{id}  --> removes a customer from database.
 
+---
+## Example results
+#### getCustomers
+[![get-Customers-results.png](https://i.postimg.cc/nr98V6dP/get-Customers-results.png)](https://postimg.cc/0KvXcH1Y)
