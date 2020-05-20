@@ -95,6 +95,24 @@ public class GenericResource {
         return Response.created(customeruri).build();
     }
     
+    @POST
+    @Path("addCustomer")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addCustomer1(Customer c){
+        
+        Customer cs1;
+        System.out.println("customer details : "+c.getName()+" "+c.getCustomerId());
+        cs1 = cejb.addCustomer(c);
+        return Response.status(201).entity(cs1).build();      
+    }
+
+    
+    
+    
+    
+    
+    
     @DELETE
     @Path("removeCustomer/{id}")
     @Produces(MediaType.APPLICATION_JSON)
