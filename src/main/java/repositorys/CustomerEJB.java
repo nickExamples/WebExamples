@@ -46,7 +46,7 @@ public class CustomerEJB {
         
         Customer cs = em.find(Customer.class, id);
         if(cs == null){
-            throw new NotFoundException();
+            return null;
                 }
                 return cs;
            }
@@ -56,7 +56,7 @@ public class CustomerEJB {
         
         Customer cs = em.find(Customer.class, id);
         if(cs == null){
-            throw new NotFoundException();
+            return null;
            }
             return cs.getPurchaseOrderCollection();
            
@@ -88,6 +88,8 @@ public class CustomerEJB {
        public Customer removeCustomer(int id){
                       
            Customer cus = findCustomerId(id);
+           if(cus == null)
+               return null;
            em.remove(cus);
            return cus;
             }

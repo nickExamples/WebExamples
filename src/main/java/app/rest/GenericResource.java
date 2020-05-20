@@ -102,7 +102,7 @@ public class GenericResource {
     public Response addCustomer1(Customer c){
         
         Customer cs1;
-        System.out.println("customer details : "+c.getName()+" "+c.getCustomerId());
+        //System.out.println("customer details : "+c.getName()+" "+c.getCustomerId());
         cs1 = cejb.addCustomer(c);
         return Response.status(201).entity(cs1).build();      
     }
@@ -120,8 +120,10 @@ public class GenericResource {
         
         Customer cus;
         cus = cejb.removeCustomer(id);
+        if(cus == null)
+            return Response.status(404).build();
     
-        return Response.ok().build();
+        return Response.ok(cus).build();
     }
     
     
@@ -133,7 +135,7 @@ public class GenericResource {
         Customer cs = cejb.findCustomerId(id);
                 
         if(cs == null){
-            throw new NotFoundException();
+            return Response.status(404).build();
         }
                
         return Response.ok(cs).build();
@@ -144,7 +146,10 @@ public class GenericResource {
     @Path("getCustomers/{id}/purchaces")
     @Produces(MediaType.APPLICATION_JSON)
     public Collection<PurchaseOrder> getCustomerPurchaseCollection(@PathParam("id") int id){
-    
+                
+        if(cejb.getCustomerIdPO(id) == null)
+            throw new NotFoundException();
+        
         return cejb.getCustomerIdPO(id);
     }
     
