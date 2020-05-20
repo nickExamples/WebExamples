@@ -1,6 +1,6 @@
 # REST api example
 ---
-This is a rest api example exposing database operations in JSON, using java jee, jersey, ejb, jpa, cdi.
+This is a rest api example exposing database operations and some business logic. Using java jee, jersey, ejb, jpa, cdi.
 
 Launch browser with : http://localhost:8080/restExamples/api/customer/getCustomers
 
@@ -36,4 +36,5 @@ base url : restExamples/api
 
 #### /getCustomers/{id}/purchaces
 [![get-Customer-Id-Purchaces.png](https://i.postimg.cc/nrtFtpx0/get-Customer-Id-Purchaces.png)](https://postimg.cc/7Gm83vf2)
+---
 
