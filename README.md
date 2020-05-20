@@ -1,6 +1,6 @@
 # REST api example
 ---
-This is a rest api example exposing database operations in JSON, using java jee.
+This is a rest api example exposing database operations in JSON, using java jee, jersey, ejb, jpa, cdi.
 
 Launch browser with : http://localhost:8080/restExamples/api/customer/getCustomers
 
